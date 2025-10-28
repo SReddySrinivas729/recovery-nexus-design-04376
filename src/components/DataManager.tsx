@@ -26,7 +26,14 @@ interface DataManagerProps {
 }
 
 export const DataManager = ({ title, description, fields, initialData, renderCard }: DataManagerProps) => {
-  const [items, setItems] = useState(initialData);
+  const storageKey = `bpr_${title.toLowerCase().replace(/\s+/g, '_')}`;
+  
+  const loadItems = () => {
+    const saved = localStorage.getItem(storageKey);
+    return saved ? JSON.parse(saved) : initialData;
+  };
+
+  const [items, setItems] = useState(loadItems);
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState<Record<string, string>>({});
 
@@ -39,7 +46,9 @@ export const DataManager = ({ title, description, fields, initialData, renderCar
       createdAt: new Date().toISOString(),
     };
 
-    setItems([...items, newItem]);
+    const updatedItems = [...items, newItem];
+    setItems(updatedItems);
+    localStorage.setItem(storageKey, JSON.stringify(updatedItems));
     setFormData({});
     setOpen(false);
     toast({ title: "Success", description: `${title.slice(0, -1)} created successfully` });

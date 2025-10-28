@@ -17,6 +17,11 @@ const StatCard = ({ title, value, icon: Icon, description }: any) => (
 );
 
 const Dashboard = () => {
+  const getCount = (key: string) => {
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved).length : 0;
+  };
+
   return (
     <div className="space-y-8">
       <div>
@@ -31,37 +36,37 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <StatCard
           title="Resources"
-          value="24"
+          value={getCount('bpr_resources')}
           icon={Database}
           description="Active resources tracked"
         />
         <StatCard
           title="Recovery Sites"
-          value="6"
+          value={getCount('bpr_recovery_sites')}
           icon={MapPin}
           description="Operational sites"
         />
         <StatCard
           title="Data Backups"
-          value="156"
+          value={getCount('bpr_data_backups')}
           icon={HardDrive}
           description="Backup instances"
         />
         <StatCard
           title="Business Processes"
-          value="18"
+          value={getCount('bpr_business_processes')}
           icon={FileText}
           description="Critical processes"
         />
         <StatCard
           title="Recovery Plans"
-          value="12"
+          value={getCount('bpr_recovery_plans')}
           icon={Shield}
           description="Active plans"
         />
         <StatCard
           title="Incidents"
-          value="3"
+          value={getCount('bpr_incidents')}
           icon={AlertTriangle}
           description="Recorded incidents"
         />
