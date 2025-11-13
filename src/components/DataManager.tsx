@@ -27,10 +27,21 @@ interface DataManagerProps {
 
 export const DataManager = ({ title, description, fields, initialData, renderCard }: DataManagerProps) => {
   const storageKey = `bpr_${title.toLowerCase().replace(/\s+/g, '_')}`;
+  const idCounterKey = `${storageKey}_id_counter`;
   
   const loadItems = () => {
     const saved = localStorage.getItem(storageKey);
-    return saved ? JSON.parse(saved) : initialData;
+    if (saved) {
+      return JSON.parse(saved);
+    }
+    // Save initial data to localStorage on first load
+    localStorage.setItem(storageKey, JSON.stringify(initialData));
+    // Set the initial ID counter based on initial data
+    const maxId = initialData.length > 0 
+      ? Math.max(...initialData.map((item: any) => parseInt(item.id) || 0))
+      : 0;
+    localStorage.setItem(idCounterKey, maxId.toString());
+    return initialData;
   };
 
   const [items, setItems] = useState(loadItems);
@@ -40,8 +51,13 @@ export const DataManager = ({ title, description, fields, initialData, renderCar
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Get next sequential ID
+    const currentId = parseInt(localStorage.getItem(idCounterKey) || "0");
+    const nextId = currentId + 1;
+    localStorage.setItem(idCounterKey, nextId.toString());
+    
     const newItem = {
-      id: Date.now().toString(),
+      id: nextId.toString(),
       ...formData,
       createdAt: new Date().toISOString(),
     };
