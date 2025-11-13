@@ -2,12 +2,7 @@ import { DataManager } from "@/components/DataManager";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { HardDrive } from "lucide-react";
 
-const initialBackups = [
-  { id: "1", type: "Full Backup", location: "AWS S3", size: "2.4 TB" },
-  { id: "2", type: "Incremental", location: "Azure Blob", size: "156 GB" },
-  { id: "3", type: "Full Backup", location: "On-premise NAS", size: "2.3 TB" },
-  { id: "4", type: "Differential", location: "Google Cloud", size: "342 GB" },
-];
+const initialBackups: any[] = [];
 
 const Backups = () => {
   return (

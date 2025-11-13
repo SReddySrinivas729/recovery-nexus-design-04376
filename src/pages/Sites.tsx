@@ -2,11 +2,7 @@ import { DataManager } from "@/components/DataManager";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin } from "lucide-react";
 
-const initialSites = [
-  { id: "1", name: "Primary Data Center", location: "New York, NY", capacity: "1000 servers" },
-  { id: "2", name: "Secondary Recovery Site", location: "Chicago, IL", capacity: "500 servers" },
-  { id: "3", name: "Cloud Backup Site", location: "AWS us-east-1", capacity: "Unlimited" },
-];
+const initialSites: any[] = [];
 
 const Sites = () => {
   return (

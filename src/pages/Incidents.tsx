@@ -3,11 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { AlertTriangle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
-const initialIncidents = [
-  { id: "1", type: "Server Outage", date: "2024-01-15", impact: "High", status: "Resolved" },
-  { id: "2", type: "Network Failure", date: "2024-01-10", impact: "Critical", status: "Investigating" },
-  { id: "3", type: "Data Corruption", date: "2024-01-08", impact: "Medium", status: "Resolved" },
-];
+const initialIncidents: any[] = [];
 
 const Incidents = () => {
   const getImpactColor = (impact: string) => {

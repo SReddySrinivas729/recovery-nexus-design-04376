@@ -2,12 +2,7 @@ import { DataManager } from "@/components/DataManager";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Database } from "lucide-react";
 
-const initialResources = [
-  { id: "1", name: "Server Cluster A", type: "Hardware", status: "Active" },
-  { id: "2", name: "Database Instance 1", type: "Software", status: "Active" },
-  { id: "3", name: "Network Equipment", type: "Hardware", status: "Standby" },
-  { id: "4", name: "Storage Array", type: "Hardware", status: "Active" },
-];
+const initialResources: any[] = [];
 
 const Resources = () => {
   return (

@@ -3,12 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { FileText } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
-const initialProcesses = [
-  { id: "1", name: "Customer Transaction Processing", priority: "Critical", rto: "2 hours" },
-  { id: "2", name: "Inventory Management", priority: "High", rto: "4 hours" },
-  { id: "3", name: "Email Services", priority: "Medium", rto: "8 hours" },
-  { id: "4", name: "Analytics Processing", priority: "Low", rto: "24 hours" },
-];
+const initialProcesses: any[] = [];
 
 const Processes = () => {
   const getPriorityColor = (priority: string) => {

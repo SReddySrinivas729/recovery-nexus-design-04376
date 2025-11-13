@@ -2,11 +2,7 @@ import { DataManager } from "@/components/DataManager";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Shield } from "lucide-react";
 
-const initialPlans = [
-  { id: "1", type: "Full Recovery", processes: "5", sites: "2", status: "Active" },
-  { id: "2", type: "Partial Recovery", processes: "3", sites: "1", status: "Active" },
-  { id: "3", type: "Emergency Failover", processes: "8", sites: "3", status: "Standby" },
-];
+const initialPlans: any[] = [];
 
 const Plans = () => {
   return (
